@@ -62,12 +62,7 @@
 
   /* Hero — Luminous Presence artwork */
   .hero { position: relative; color: #fff; padding: 195px 0 140px; overflow: hidden; background: #0a1a15; }
-  .hero-art { position: absolute; inset: 0; background-size: cover; background-repeat: no-repeat; background-position: center 32%; opacity: 0; transition: opacity 1.6s ease; }
-  .hero-art.on { opacity: 1; }
-  .hero-art.slide-arena { background-image: url('assets/art/hero-arena.jpg'); }
-  .hero-art.slide-bar { background-image: url('assets/art/hero-bar.jpg'); }
-  .hero-art.slide-home { background-image: url('assets/art/hero-home.jpg'); background-position: center 15%; }
-  @media (prefers-reduced-motion: reduce) { .hero-art { transition: none; } }
+  .hero-art { position: absolute; inset: 0; background: url('assets/art/hero-photo.jpg') center 30% / cover no-repeat; }
   .hero-veil { position: absolute; inset: 0; background:
     linear-gradient(180deg, rgba(10,26,21,0) 55%, rgba(10,26,21,.88) 100%),
     linear-gradient(94deg, rgba(8,22,17,.94) 0%, rgba(8,22,17,.78) 38%, rgba(8,22,17,.32) 72%, rgba(8,22,17,.18) 100%),
@@ -343,9 +338,7 @@
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-art slide-arena on" aria-hidden="true"></div>
-  <div class="hero-art slide-bar" aria-hidden="true"></div>
-  <div class="hero-art slide-home" aria-hidden="true"></div>
+  <div class="hero-art" aria-hidden="true"></div>
   <div class="hero-veil" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-copy">
@@ -729,19 +722,16 @@
     setTimeout(() => capEl.classList.add('on'), 120 + chars.length * 26 + 350);
   })();
 
-  // Hero rotation: arena → bar → home, with the matching place chip
-  // "checking in". With reduced motion the CSS fade is disabled, so the
-  // swap is an instant cut rather than an animation.
-  const slides = document.querySelectorAll('.hero-art');
+  // Place chips check in one after another — arena → bar → home.
   const chips = document.querySelectorAll('.place-chip');
-  function setPlace(i) {
-    slides.forEach((s, k) => s.classList.toggle('on', k === i));
-    chips.forEach((c, k) => c.classList.toggle('active', k === i));
-  }
-  if (slides.length > 1) {
+  if (chips.length) {
     let cur = 0;
-    setPlace(cur);
-    setInterval(() => { cur = (cur + 1) % slides.length; setPlace(cur); }, 6000);
+    chips[cur].classList.add('active');
+    setInterval(() => {
+      chips[cur].classList.remove('active');
+      cur = (cur + 1) % chips.length;
+      chips[cur].classList.add('active');
+    }, 4000);
   }
 
   const nav = document.getElementById('nav');
