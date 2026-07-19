@@ -448,3 +448,18 @@ a.place-chip:hover { border-color: rgba(255,255,255,.7); color: #fff; }
   background: linear-gradient(96deg, rgba(0,189,129,.35), rgba(36,119,179,.35)); border: 1.5px solid rgba(70,214,180,.5);
   border-radius: 999px; padding: 7px 16px; }
 .with-pill b { font-weight: 800; }
+
+/* v13: demo form */
+.demo-form { max-width: 540px; margin: 10px auto 0; background: #fff; border-radius: 20px; padding: 28px;
+  text-align: left; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.demo-form label { display: block; font-family: var(--sans); font-weight: 600; font-size: 13.5px; color: var(--ink); margin: 14px 0 6px; }
+.demo-form label .optional { color: var(--muted); font-weight: 500; }
+.demo-form label:first-of-type { margin-top: 0; }
+.demo-form input[type=text], .demo-form input[type=email], .demo-form textarea { width: 100%; padding: 12px 14px;
+  border: 1.5px solid rgba(0,0,0,.15); border-radius: 10px; font-family: var(--body); font-size: 15px; color: var(--text); background: #fff; }
+.demo-form input:focus, .demo-form textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(25,154,160,.15); }
+.demo-form .form-note { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.demo-thanks { max-width: 540px; margin: 10px auto 0; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px; padding: 36px 28px; }
+.demo-thanks h3 { font-size: 24px; margin-bottom: 8px; }
+.demo-thanks p { color: rgba(255,255,255,.8); }
